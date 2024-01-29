@@ -26,6 +26,7 @@
             width: 80%;
             height: 80%;
             margin: auto;
+            flex-wrap: wrap;
         }
 
         .box {
@@ -33,16 +34,32 @@
             border-radius: 10px;
             border: 1px solid black;
             margin: 5px;
+            width: 200px;
+            height: 150px;
+            text-align: center;
             background: aliceblue;
         }
 
         a {
             text-decoration: none;
             color: black;
+            vertical-align: middle;
         }
 
         h1 {
             text-align: center;
+            margin: 10px 0px;
+        }
+
+        @media only screen and (max-width: 460px) {
+            body {
+                width: 100%;
+                height: 100%;
+            }
+
+            .container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -57,6 +74,30 @@
 
         <div class="box">
             <a href="./practical2/practical2.html">Practical 2</a>
+        </div>
+
+        <div class="box">
+            <a href="./practical3/practical3.html">Practical 3</a>
+        </div>
+
+        <div class="box">
+            <a href="./practical4/practical4.html">Practical 4</a>
+        </div>
+
+        <div class="box">
+            <a href="./practical5/practical5.html">Practical 5</a>
+        </div>
+
+        <div class="box">
+            <a href="./practical6/practical6.html">Practical 6</a>
+        </div>
+
+        <div class="box">
+            <a href="./practical7/practical7.html">Practical 7</a>
+        </div>
+
+        <div class="box">
+            <a href="./practical8/practical8.html">Practical 8</a>
         </div>
 
     </div>
