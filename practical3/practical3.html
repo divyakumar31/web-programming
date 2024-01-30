@@ -1,11 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L. D. College of Engineering</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            padding: 0px 50px;
+        }
+
+        .logo {
+            height: 65px;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav ul li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .img-container {
+            height: calc(100dvh - 70px);
+            width: 100dvw;
+            background-image: url("./images/bg.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            filter: blur(3px);
+            -webkit-filter: blur(3px);
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(201, 200, 200);
+            width: 60%;
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        h2, h3, p {
+            margin-bottom: 10px;
+        }
+
+        .vision li,
+        .mission li {
+            list-style-type: "👉";
+        }
+
+        .vision li::before,
+        .mission li::before {
+            content: "";
+            margin-left: 15px;
+        }
+
+        .vision,
+        .mission {
+            width: 60%;
+            margin: 15px auto;
+            text-align: justify;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Design static web pages for your college containing a description of the courses, departments, faculties, library etc. Provide links for navigation among pages. -->
+
+    <nav>
+        <img src="./images/logo.png" alt="Logo" class="logo">
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="department.html">DEPARTMENTS</a></li>
+            <li><a href="#">ACADEMICS</a></li>
+            <li><a href="library.html">CAMPUS LIFE</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="img-container"></div>
+        <div class="text-container">
+            <h2>Welcome To LDCE</h2>
+            <p> <strong>L. D. College of Engineering</strong> endearingly known as <b>L.D.C.E</b> is Ahmedabad's premier
+                engineering college situated at the city's heart and surrounded by elite organization like <b>PRL,
+                    ATIRA, ISRO, IIM</b> and <b>CEPT</b>. Starting in 1948 to impart quality higher education in various
+                fields of engineering, it has seen unprecedented growth.
+            </p>
+            <p>It is affiliated with Gujarat Technological University & administrated by Department of Technical
+                Education, Government of Gujarat.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="vision">
+            <h3>VISION</h3>
+            <li>To contribute for sustainable development of nation through achieving excellence in technical education
+                and research while facilitating transformation of students into responsible citizens and competent
+                professionals.</li>
+        </div>
+        <div class="mission">
+            <h3>MISSION</h3>
+            <li>To impart affordable and quality education in order to meet the needs of industries and achieve
+                excellence
+                in teaching-learning process.</li>
+            <li>To create a conducive research ambience that drives innovation and nurtures research-oriented scholars
+                and
+                outstanding professionals.</li>
+            <li>To collaborate with other academic & research institutes as well as industries in order to strengthen
+                education and multidisciplinary research.</li>
+            <li>To promote equitable and harmonious growth of students, academicians, staff, society and industries,
+                thereby
+                becoming a center of excellence in technical education.</li>
+
+            <li>To practise and encourage high standards of professional ethics, transparency and accountability.</li>
+        </div>
+    </div>
 </body>
+
 </html>
