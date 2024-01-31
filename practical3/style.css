@@ -91,9 +91,51 @@ p {
 
 .library {
     width: 90dvw;
-    
+    text-align: center;
 }
 
 h1 {
     text-align: center;
+}
+
+.containers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.containers > p {
+    margin: 10px 10dvw;
+    text-align: justify;
+}
+
+.containers > img {
+    width: 80dvw;
+}
+
+.celogo {
+    width: 150px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    margin: 10px;
+}
+
+tr, td, th {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+thead, tr:nth-child(2n) {
+    background: #f9f9f9;
+}
+
+.course {
+    width: 50%;
+    text-align: justify;
 }
