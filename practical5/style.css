@@ -71,8 +71,12 @@ h1 {
 .musics {
     align-items: center;
     flex-direction: row;
-    width: 60%;
+    width: 70%;
     gap: 50px;
+}
+
+.musics label {
+    width: 20%;
 }
 
 .videos {
@@ -81,4 +85,27 @@ h1 {
 
 video {
     border-radius: 15px;
+}
+
+audio {
+    width: max(80%, 300px);
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 780px){
+    .musics {
+        align-items: start;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    audio {
+        width: max(100%, 300px);
+        font-size: 16px;
+    }
+
+    .musics label {
+        width: 100%;
+    }
 }
