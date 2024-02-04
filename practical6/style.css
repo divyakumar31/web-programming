@@ -65,6 +65,10 @@ h1, h3 {
     top: 50px;
 }
 
+.ingredients{
+    width: 50%;
+}
+
 img {
     width: 250px;
     border-radius: 10px;
@@ -78,4 +82,15 @@ img {
 
 .end-msg {
     color: grey;
+}
+
+@media only screen and (max-width: 1024px) {
+    .images {
+        position: relative;
+        right: 0px;
+        top: 0px;
+    }
+    .ingredients{
+        width: 100%;
+    }
 }
