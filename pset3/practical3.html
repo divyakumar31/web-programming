@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime or Not</title>
+    <link href='https://cdn.jsdelivr.net/npm/highlight.js@11.6.0/styles/github-dark.css' rel='stylesheet' />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 80%;
+            height: calc(100dvh - 60px);
+            margin: 0px auto;
+            overflow: scroll;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        pre{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        code {
+            margin: 0px;
+            font-size: 20px;
+            font-family: monospace;
+        }
+
+        .hljs-ln-code {
+            padding-left: 10px !important;
+        }
+
+        .title {
+            height: 50px;
+            text-align: center;
+            color: tomato;
+            font-family: system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <h1>Practical 3.3: Functions.</h1>
+    </div>
+    <div class="container">
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Practical 3&lt;/title&gt;
+    &lt;style&gt;
+        p {
+            margin: 5px 0px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;form action="&lt;?php $_SERVER['PHP_SELF'] ?&gt;" method="post"&gt;
+        &lt;label for="number"&gt;Enter the number: &lt;/label&gt;
+        &lt;input type="text" name="number" id="number" placeholder="Enter the height of pattern" value="0"&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;?php
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $number = $_REQUEST['number'];
+        echo "&lt;p&gt;Absolute value of $number: &lt;b&gt;" . abs($number) . "&lt;/b&gt;&lt;/p&gt;";
+
+        echo "&lt;p&gt;Rounded value of $number: &lt;b&gt;" . round($number) . "&lt;/b&gt;&lt;/p&gt;";
+
+        echo "&lt;p&gt;Ceiled value of $number: &lt;b&gt;" . ceil($number) . "&lt;/b&gt;&lt;/p&gt;";
+
+        echo "&lt;p&gt;Floored value of $number: &lt;b&gt;" . floor($number) . "&lt;/b&gt;&lt;/p&gt;";
+
+        echo "&lt;p&gt;Minimum value from 10, 5, 8, 3 is &lt;b&gt;" . min(10, 5, 8, 3) . "&lt;/b&gt;&lt;/p&gt;";
+
+        echo "&lt;p&gt;Maximum value from 10, 5, 8, 3 is &lt;b&gt;" . max(10, 5, 8, 3) . "&lt;/b&gt;&lt;/p&gt;";
+
+        echo "&lt;p&gt;2 raised to the power of 3: &lt;b&gt;" . pow(2, 3) . "&lt;/b&gt;&lt;/p&gt;";
+
+        echo "&lt;p&gt;Square root of $number: &lt;b&gt;" . sqrt($number) . "&lt;/b&gt;&lt;/p&gt;";
+    }
+    ?&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <script src='//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js'></script>
+    <script
+        src='https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/src/highlightjs-line-numbers.min.js'></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+</body>
+
+</html>
