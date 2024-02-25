@@ -11,13 +11,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background-color: aliceblue;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-weight: 500;
         }
-
         main {
             position: absolute;
             left: 50%;
@@ -27,26 +25,22 @@
             background: skyblue;
             border-radius: 15px;
         }
-
         form {
             display: flex;
             flex-direction: column;
         }
-
         form>div {
             margin: 5px;
         }
-
         h1 {
             margin: 15px 0px;
             text-align: center;
         }
-
         label {
             padding: 0px 10px;
             font-size: 18px;
         }
-        div > label:first-of-type{
+        div>label:first-of-type {
             display: inline-block;
             width: 120px;
         }
@@ -59,19 +53,15 @@
             padding: 2px 5px;
             font-size: 16px;
         }
-
         input[type=date] {
             font-family: inherit;
         }
-
         input[type='date']::-webkit-calendar-picker-indicator {
             cursor: pointer;
         }
-
         select>option {
             background-color: rgba(165, 225, 243, 0.6);
         }
-
         button {
             padding: 5px;
             font-size: 16px;
@@ -82,47 +72,66 @@
             border: 0;
             background-color: aliceblue;
         }
-
         button:hover {
             background: rgb(247, 247, 247);
         }
+        .output {
+            display: none;
+            align-items: center;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .left>img {
+            width: 200px;
+            border-radius: 5px;
+        }
+        .right {
+            align-self: flex-start;
+        }
+        .middle {
+            align-self: flex-start;
+            padding: 0px 10px;
+        }
+        .middle>div,
+        .right>div {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
-
 <body>
     <main>
-        <h1>Registration Form</h1>
+        <h1 id="header">Registration Form</h1>
         <form id="myForm">
             <div class="name">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="Name" placeholder="Enter your name">
+                <input type="text" name="name" id="Name" placeholder="Enter your name" required>
             </div>
             <div class="birthdate">
                 <label for="birthdate">Birthdate</label>
-                <input type="date" name="birthdate" id="date" max="2024-1-31" min="1990-01-01" />
+                <input type="date" name="birthdate" id="date" max="2024-1-31" min="1990-01-01" required />
             </div>
             <div class="gender">
                 <label for="gender">Gender</label>
-                <input type="radio" id="male" name="gender" value="Male"><label for="male">Male</label>
-                <input type="radio" id="female" name="gender" value="Female"><label for="female">Female</label>
-                <input type="radio" id="prefer not to say" name="gender" value="Prefer not to say"><label
+                <input type="radio" id="male" name="gender" value="Male" required><label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" required><label for="female">Female</label>
+                <input type="radio" id="prefer not to say" name="gender" value="Prefer not to say" required><label
                     for="prefer not to say">Prefer not to say</label>
             </div>
             <div class="email">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" />
+                <input type="email" name="email" id="email" placeholder="Email" required />
             </div>
             <div class="phone">
                 <label for="phone">Phone</label>
-                <input type="tel" placeholder="Phone" name="phone" />
+                <input type="tel" placeholder="Phone" name="phone" required />
             </div>
             <div class="document">
-                <label for="file">Document</label>
-                <input type="file" name="file" id="file" />
+                <label for="file">Photo</label>
+                <input type="file" name="file" id="file" accept="image/*" required />
             </div>
             <div class="country">
                 <label for="country">Country</label>
-                <select name="country" id="country" />
+                <select name="country" id="country" required />
                 <option value="" disabled selected>Country</option>
                 <option value="India">India</option>
                 <option value="Russia">Russia</option>
@@ -130,9 +139,22 @@
                 <option value="UK">United Kingdom</option>
                 </select>
             </div>
-            <button type="submit" onclick="displayDetails()">Submit</button>
+            <button type="submit">Submit</button>
         </form>
-        <div class="output"></div>
+        <div class="output">
+            <div class="left">
+                <img src="" alt="" id="displayImg">
+            </div>
+            <div class="middle">
+                <div>Name: </div>
+                <div>Email: </div>
+                <div>Phone: </div>
+                <div>Birthdate: </div>
+                <div>Gender: </div>
+                <div>Country: </div>
+            </div>
+            <div class="right"></div>
+        </div>
     </main>
 
     <script>
@@ -141,18 +163,22 @@
         f.addEventListener("submit", (e) => {
             e.preventDefault();
             var dataf = document.forms[0];
-            output.textContent = '';
-            output.innerHTML = `
-                    <h2>Form Data</h2>
-                    <p>Name: ${dataf.Name.value}</p>
-                    <p>Email: ${dataf.email.value}</p>
-                    <p>Phone: ${dataf.phone.value}</p>
-                    <p>Birth Date: ${dataf.date.value}</p>
-                    <p>Gender: ${dataf.gender.value}</p>
-                    <p>Country: ${dataf.country.value}</p>
-                    `;
+            var displayImg = document.getElementById("displayImg");
+            var displayDetails = document.querySelector(".right");
+
+            displayImg.src = URL.createObjectURL(dataf.file.files[0]);
+            displayImg.alt = `Image of ${dataf.Name.value}`;
+
+            displayDetails.innerHTML = `<div>${dataf.Name.value}</div>
+                                        <div>${dataf.email.value}</div>
+                                        <div>${dataf.phone.value}</div>
+                                        <div>${dataf.date.value}</div>
+                                        <div>${dataf.gender.value}</div>
+                                        <div>${dataf.country.value}</div>
+                                        `;
+            f.style.display = "none";
+            output.style.display = "flex";
         });
     </script>
 </body>
-
 </html>
