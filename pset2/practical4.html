@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aliceblue;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 500;
+        }
+
+        main {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: min(60%, 500px);
+            background: skyblue;
+            border-radius: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form>div {
+            margin: 5px;
+        }
+
+        h1 {
+            margin: 15px 0px;
+            text-align: center;
+        }
+
+        label {
+            padding: 0px 10px;
+            font-size: 18px;
+        }
+
+        input,
+        select {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 0;
+            outline: 0;
+            border-radius: 5px;
+            padding: 2px 5px;
+            font-size: 16px;
+        }
+
+        input[type=date] {
+            font-family: inherit;
+        }
+
+        input[type='date']::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+        }
+
+        select>option {
+            background-color: rgba(165, 225, 243, 0.6);
+        }
+
+        button {
+            padding: 5px;
+            font-size: 16px;
+            margin: 15px auto;
+            border-radius: 10px;
+            width: 25%;
+            cursor: pointer;
+            border: 0;
+            background-color: aliceblue;
+        }
+
+        button:hover {
+            background: rgb(247, 247, 247);
+        }
+
+        div > label:first-of-type{
+            display: inline-block;
+            width: 120px;
+        }
+
+        .validation{
+            font-size: 14px;
+            padding-left: 130px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Registration Form</h1>
+        <form id="myForm">
+            <div class="name">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="Name" placeholder="Enter your name">
+                <div class="nameValidate validation" style="color: red;">Invalid</div>
+            </div>
+            <div class="birthdate">
+                <label for="birthdate">Birthdate</label>
+                <input type="date" name="birthdate" id="date" max="2024-1-31" min="1990-01-01" />
+            </div>
+            <div class="gender">
+                <label for="gender">Gender</label>
+                <input type="radio" id="male" name="gender" value="Male"><label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female"><label for="female">Female</label>
+                <input type="radio" id="prefer not to say" name="gender" value="Prefer not to say"><label
+                    for="prefer not to say">Prefer not to say</label>
+            </div>
+            <div class="email">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email"/>
+                <div class="emailValidate validation" style="color: red;">Invalid</div>
+            </div>
+            <div class="phone">
+                <label for="phone">Phone</label>
+                <input type="tel" placeholder="Phone" name="phone" id="phone"/>
+                <div class="phoneValidate validation" style="color: red;">Invalid</div>
+            </div>
+            <div class="document">
+                <label for="file">Document</label>
+                <input type="file" name="file" id="file" />
+            </div>
+            <div class="country">
+                <label for="country">Country</label>
+                <select name="country" id="country" />
+                <option value="" disabled selected>Country</option>
+                <option value="India">India</option>
+                <option value="Russia">Russia</option>
+                <option value="USA">USA</option>
+                <option value="UK">United Kingdom</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+    <script>
+        const name = document.getElementById("Name");
+        name.addEventListener("input", (e)=>{
+            validateName();
+        });
+
+        const email = document.getElementById("email");
+        email.addEventListener("input", (e)=>{
+            validateEmail();
+        });
+
+        const phone = document.getElementById("phone");
+        phone.addEventListener("input", (e)=>{
+            validatePhone();
+        });
+
+        function validateName(){
+            const regx = /^[A-z]+[ ]{0,1}[A-z]+$/gmi;
+            if(regx.test(name.value)){
+                displayValid("name", "nameValidate");
+            }
+            else {
+                displayInvalid("name", "nameValidate");
+            }
+        }
+
+        function validateEmail(){
+            const regx = /^[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+            if(regx.test(email.value)){
+                displayValid("email", "emailValidate");
+            }
+            else {
+                displayInvalid("email", "emailValidate");
+            }
+        }
+
+        function validatePhone(){
+            const regx = /^[\d]{10}$/gmi;
+            if(regx.test(phone.value)){
+                displayValid("phone", "phoneValidate");
+            }
+            else {
+                displayInvalid("phone", "phoneValidate");
+            }
+        }
+
+        function displayInvalid(inputName, inputClass){
+            const output = document.querySelector(`.${inputClass}`);
+            output.innerHTML = `${inputName} is Invalid`;
+            output.style.color = "red";
+            output.style.display = "block";
+        }
+
+        function displayValid(inputName, inputClass){
+            const output = document.querySelector(`.${inputClass}`);
+            output.innerHTML = `${inputName} is Valid`;
+            output.style.color = "green";
+            output.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

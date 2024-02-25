@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100dvh;
+            /* background-color: aliceblue; */
+            flex-direction: column;
+            font-family: system-ui, sans-serif;
+        }
+
+        #input {
+            padding: 4px;
+            margin: 4px 0px;
+            font-size: 24px;
+            font-weight: bolder;
+            border: 1px solid grey;
+            grid-column: span 4;
+            border-radius: 5px;
+            text-align: right;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(4, 1fr);
+            border: 2px solid grey;
+            padding: 15px;
+            border-radius: 15px;
+            width: 240px;
+        }
+
+        .container button {
+            padding: 15px;
+            background-color: rgb(210, 209, 243);
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 24px;
+        }
+
+        .container button:hover {
+            /* background-color: antiquewhite; */
+            background-color: rgb(196, 159, 232);
+        }
+
+        button[type="reset"] {
+            grid-column: span 4;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input id="input" type="text" autofocus/>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>+</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>*</button>
+        <button>0</button>
+        <button>.</button>
+        <button>/</button>
+        <button type="submit" onclick="calculate()">=</button>
+        <button type="reset" onclick="cleardisplay()">AC</button>
+    </div>
+
+    <script>
+        var input = document.getElementById('input');
+        var buttons = document.querySelectorAll("button:not([type='submit']):not([type='reset'])");
+
+        input.addEventListener("keydown", (e) => {
+            let regx = /[^0-9\-+\*\/.]/g;
+            input.value = input.value.replace(regx, '');
+            if (e.key == "Enter") {
+                calculate();
+            }
+        });
+
+        for (const button of buttons) {
+            button.addEventListener("click", (e) => {
+                if (input.value == "0" || input.value == "Error") {
+                    input.value = button.textContent;
+                }
+                else {
+                    input.value += button.textContent;
+                }
+            })
+        }
+
+        function calculate() {
+            var inp = input.value;
+            var regx = /^[+-]?\d*\.*\d+(?:[+*\/-][+-]?\d*\.*\d+)*$/gm;
+            if (regx.test(inp)) {
+                input.value = eval(inp);
+            }
+            else {
+                input.value = "Error";
+            }
+        }
+
+        function cleardisplay() {
+            input.value = "0";
+        }
+
+    </script>
+</body>
+
+</html>
